@@ -1,6 +1,4 @@
 from tkinter import *
-from warnings import resetwarnings
-
 from quiz_brain import QuizBrain
 
 BG = "#DDF7E3"
@@ -19,7 +17,7 @@ class QuizInterface:
         self.question = self.canvas.create_text(150, 125, width=280, text="Question", fill='black', font=FONT)
 
         # Label
-        self.score_label = Label(self.window, text='Score: ', font=FONT, bg=BG, fg = 'black')
+        self.score_label = Label(self.window, text='Score: 0', font=FONT, bg=BG, fg = 'black')
         self.score_label.grid(row=0, column=1)
 
         # Buttons
@@ -36,9 +34,17 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
-        self.canvas.config(bg="white")
-        q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.question, text=q_text)
+        if self.quiz.still_has_questions():
+            self.canvas.config(bg="white")
+            self.score_label.config(text=f'Score: {self.quiz.score}')
+            q_text = self.quiz.next_question()
+            self.canvas.itemconfig(self.question, text=q_text)
+        else:
+            self.canvas.config(bg="white")
+            self.true_button.config(state='disabled')
+            self.false_button.config(state='disabled')
+            grade = (self.quiz.score/10) * 100
+            self.canvas.itemconfig(self.question, text=f'Congrats! You\'ve finished the quiz with a {grade}%')
 
     def true_pressed(self):
        is_right = self.quiz.check_answer('True')
