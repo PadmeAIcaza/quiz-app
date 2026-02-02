@@ -1,7 +1,48 @@
-# Functionality
-- Uses an API that requests random questions from Open Trivia DB
-- Displays the fetched question on the screen
-- There are two buttons for the user to click: 'T' and 'F' (True and False)
-- If the user got the question correct, the screen will show a green backround
-- If the user got the question incorrect, the screen will show a red backround
-- Once the user finishes all the questions, it will display the score as a percentage
+# Quizzzzler (Tkinter Trivia Quiz)
+
+A simple **True/False trivia quiz** desktop app built with **Python + Tkinter**.  
+It pulls questions from the **Open Trivia DB API**, shows them one by one, and updates your score with instant feedback (green/red background).
+
+---
+
+## Features
+- ✅ True/False questions (10 by default)
+- ✅ Score tracking
+- ✅ Instant visual feedback after each answer
+- ✅ Questions are HTML-unescaped (so stuff like `&quot;` renders properly)
+
+---
+
+## Tech Stack
+- **Python**
+- **Tkinter** (GUI)
+- **requests** (API calls)
+
+---
+
+## Project Structure
+project/
+├─ src/
+│ ├─ main.py
+│ ├─ data.py
+│ ├─ question_model.py
+│ ├─ quiz_brain.py
+│ └─ ui.py
+└─ images/
+├─ T.png
+└─ F.png
+
+
+> ⚠️ `images/` is required because the UI loads:
+> - `../images/T.png`
+> - `../images/F.png`
+
+So the `images` folder must be **next to** `src`, not inside it.
+
+---
+
+## Setup
+
+### 1) Install dependencies
+```bash
+pip install requests
