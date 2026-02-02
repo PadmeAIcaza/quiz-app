@@ -21,17 +21,17 @@ It pulls questions from the **Open Trivia DB API**, shows them one by one, and u
 ---
 
 ## Project Structure
+```markdown
 project/
 ├─ src/
 │ ├─ main.py
 │ ├─ data.py
 │ ├─ question_model.py
-│ ├─ quiz_brain.py
 │ └─ ui.py
 └─ images/
 ├─ T.png
 └─ F.png
-
+```
 
 > ⚠️ `images/` is required because the UI loads:
 > - `../images/T.png`
